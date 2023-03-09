@@ -2,10 +2,10 @@ import React, { useState, useContext} from "react"
 
 const AppContext = React.createContext();
 
-export const AppProvider = ({children}) => {
+const AppProvider = ({children}) => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(true);
     const [isSubMenuOpen, setIsSubMenuOpen] = useState(true)
-}
+
 
 const openSidebar = ()  => {
     setIsSidebarOpen(true)
@@ -23,7 +23,7 @@ const closeIsSubMenu = () => {
     setIsSubMenuOpen(false)
 }
 
-return <AppContext.Provider value={{
+return (<AppContext.Provider value={{
     isSidebarOpen,
     isSubMenuOpen,
     openSidebar,
@@ -33,10 +33,12 @@ return <AppContext.Provider value={{
 }}>
     {children}
 </AppContext.Provider>
+);
+};
 
 //custom Hooks
 
-export const useGlobalCotext = () => {
+export const useGlobalContext = () => {
     return useContext(AppContext);
 }
 
